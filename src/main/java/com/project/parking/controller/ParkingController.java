@@ -1,23 +1,36 @@
 package com.project.parking.controller;
 
 import com.project.parking.entity.ParkingTicket;
+import com.project.parking.service.ParkingService;
+import com.project.parking.service.ParkingServiceImpl;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/parking/api")
+@RequestMapping("/parking-app/api")
 @Api(value = "Parking garage app", tags = {"REST API for Parking Garage"})
 public class ParkingController {
 
-  @GetMapping("/v1/createParkingTicket")
-  public ParkingTicket createParkingTicket() {
+  private final ParkingService parkingService;
 
-    ParkingTicket parkingTicket = null;
+  public ParkingController(ParkingService parkingService) {
+    this.parkingService = parkingService;
+  }
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(ParkingController.class);
+
+
+
+  @PostMapping("/v1/parking-ticket/new")
+  public int addParkingTicket() {
+    LOGGER.info("ParkingController.addParkingTicket() start");
+    int parkingTicket = this.parkingService.addParkingTicket();
+    LOGGER.info("ParkingController.addParkingTicket() end");
     return parkingTicket;
-
   }
 
   // entering garage

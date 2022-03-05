@@ -4,7 +4,9 @@ import com.project.parking.dao.ParkingDao;
 import com.project.parking.entity.ParkingTicket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ParkingServiceImpl implements ParkingService {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ParkingServiceImpl.class);
@@ -16,12 +18,12 @@ public class ParkingServiceImpl implements ParkingService {
   }
 
   @Override
-  public ParkingTicket createParkingTicket() {
-    LOGGER.info("ParkingService.createParkingTicket() start");
+  public int addParkingTicket() {
+    LOGGER.info("ParkingService.addParkingTicket() start");
 
-    ParkingTicket parkingTicket = this.parkingDao.createParkingTicket();
+    int parkingTicket = this.parkingDao.addParkingTicket();
 
-    LOGGER.info("ParkingService.createParkingTicket() end");
+    LOGGER.info("ParkingService.addParkingTicket() end");
 
     return parkingTicket;
   }

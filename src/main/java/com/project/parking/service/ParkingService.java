@@ -4,6 +4,6 @@ import com.project.parking.entity.ParkingTicket;
 
 public interface ParkingService {
 
-  ParkingTicket createParkingTicket();
+  int addParkingTicket();
 
 }

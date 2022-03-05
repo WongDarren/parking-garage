@@ -5,6 +5,6 @@ import com.project.parking.entity.ParkingTicket;
 
 public interface ParkingDao {
 
-  ParkingTicket createParkingTicket();
+  int addParkingTicket();
 
 }
